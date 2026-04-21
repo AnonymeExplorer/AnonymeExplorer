@@ -1,7 +1,8 @@
-# RacOS dla Pythonista 3 (iOS)
+# RacOS Shell 2.0 dla Pythonista 3 (iOS)
 
-To jest symulacja systemu operacyjnego **RacOS** działająca w trybie terminalowym,
-z możliwością uruchomienia rozbudowanego GUI.
+To jest zaawansowana, **w pełni terminalowa** symulacja systemu operacyjnego RacOS
+inspirowana doświadczeniem pracy jak w Termux (komendy shell, pakiety, procesy, pliki,
+zmienne środowiskowe, aliasy, historia, narzędzia systemowe).
 
 ## Jak uruchomić w Pythonista 3
 
@@ -9,30 +10,32 @@ z możliwością uruchomienia rozbudowanego GUI.
 2. Otwórz `main.py`.
 3. Uruchom skrypt.
 
-## Tryb terminalowy
+## Najważniejsze możliwości
 
-Po uruchomieniu zobaczysz prompt `racos:/home/user$`.
+- System plików: `ls`, `cd`, `mkdir`, `touch`, `write`, `append`, `cat`, `rm -r`, `cp`, `mv`, `find`, `grep`
+- Shell: `echo`, `history`, `alias`, `export`, `env`, `man`
+- System: `whoami`, `uname -a`, `sysinfo`, `uptime`, `date`, `df`, `free`
+- Procesy: `ps`, `top`, `run`, `kill`
+- Sieć: `net status|up|down|scan`, `ping`
+- Pakiety (`pkg`): `search`, `install`, `list`, `upgrade`
 
-Przykładowe komendy:
-- `help`
-- `ls`
-- `cd /home/user/docs`
-- `cat welcome.txt`
-- `run edytor`
-- `ps`
-- `net scan`
-- `gui` (uruchamia GUI)
+## Przykładowa sesja
 
-## GUI
-
-Po wpisaniu komendy `gui` otwiera się panel **RacOS Control Center** z:
-- monitorowaniem procesów,
-- informacją systemową,
-- skanowaniem sieci,
-- szybkim podglądem plików,
-- przyciskiem tworzenia nowych procesów.
+```bash
+help
+pkg search git
+pkg install git
+mkdir projekty
+cd projekty
+touch notes.txt
+write notes.txt "RacOS shell działa"
+cat notes.txt
+ps
+ping openai.com
+```
 
 ## Uwagi
 
-- System plików i procesy są symulowane (in-memory).
-- Wszystko działa bez dodatkowych bibliotek (wykorzystuje `ui` dostępne w Pythonista).
+- Aplikacja nie zawiera GUI (zgodnie z założeniem terminal-only).
+- System plików, procesy i pakiety są symulowane w pamięci (in-memory).
+- Nie są wymagane dodatkowe biblioteki poza standardowym Pythonem dostępnych w Pythonista.
